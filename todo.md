@@ -16,3 +16,5 @@
 - [x] Add Vitest coverage for age validation, password handling, sessions, feed access, and post creation
 - [x] Run type checks, tests, and browser validation
 - [x] Save the final project checkpoint and deliver website/backend/iOS source artifacts
+- [ ] Replace the temporary Manus preview URL with a stable HTTPS BlueLegacy API domain compatible with iOS 9; the current test IPA uses an HTTP fallback only
+- [ ] Prepare GitHub Pages account-site deployment with a configured stable HTTPS backend origin for the iOS client
