@@ -27,7 +27,7 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm build
         env:
-          VITE_BLUELEGACY_API_ORIGIN: ${{ vars.BLUELEGACY_API_ORIGIN }}
+          VITE_BLUELEGACY_API_ORIGIN: https://3000-igqcwd10siv1kf8az0y09-b5e7a698.us1.manus.computer
       - uses: actions/configure-pages@v5
         with:
           enablement: true
