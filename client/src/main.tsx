@@ -37,10 +37,12 @@ queryClient.getMutationCache().subscribe(event => {
   }
 });
 
+const apiOrigin = (import.meta.env.VITE_BLUELEGACY_API_ORIGIN || "").replace(/\/$/, "");
+
 const trpcClient = trpc.createClient({
   links: [
     httpBatchLink({
-      url: "/api/trpc",
+      url: `${apiOrigin}/api/trpc`,
       transformer: superjson,
       headers() {
         // Preview auto-login fallback: when the browser blocks iframe cookies

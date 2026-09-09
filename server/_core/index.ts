@@ -6,6 +6,7 @@ import { createExpressMiddleware } from "@trpc/server/adapters/express";
 import { registerOAuthRoutes } from "./oauth";
 import { registerStorageProxy } from "./storageProxy";
 import { appRouter } from "../routers";
+import { createBlueLegacyPost, getBlueLegacyAccount, listBlueLegacyPosts, loginBlueLegacy, logoutBlueLegacy, registerBlueLegacy } from "../bluelegacy";
 import { createContext } from "./context";
 import { serveStatic, setupVite } from "./vite";
 
@@ -34,6 +35,35 @@ async function startServer() {
   // Configure body parser with larger size limit for file uploads
   app.use(express.json({ limit: "50mb" }));
   app.use(express.urlencoded({ limit: "50mb", extended: true }));
+  app.use("/api/bluelegacy", (req, res, next) => {
+    const allowedOrigin = process.env.BLUELEGACY_WEB_ORIGIN || "*";
+    res.header("Access-Control-Allow-Origin", allowedOrigin);
+    res.header("Access-Control-Allow-Headers", "Content-Type, X-BlueLegacy-Token");
+    res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+    if (req.method === "OPTIONS") return res.sendStatus(204);
+    next();
+  });
+  app.get("/api/bluelegacy/feed", async (_req, res) => {
+    try { res.json(await listBlueLegacyPosts()); } catch (error) { res.status(500).json({ error: error instanceof Error ? error.message : "Feed unavailable" }); }
+  });
+  app.post("/api/bluelegacy/register", async (req, res) => {
+    try { res.status(201).json(await registerBlueLegacy({ username: String(req.body.username || ""), password: String(req.body.password || ""), age: Number(req.body.age) })); } catch (error) { res.status(400).json({ error: error instanceof Error ? error.message : "Registration failed" }); }
+  });
+  app.post("/api/bluelegacy/login", async (req, res) => {
+    try { res.json(await loginBlueLegacy(String(req.body.username || ""), String(req.body.password || ""))); } catch (error) { res.status(401).json({ error: error instanceof Error ? error.message : "Login failed" }); }
+  });
+  app.get("/api/bluelegacy/me", async (req, res) => {
+    const account = await getBlueLegacyAccount(String(req.header("X-BlueLegacy-Token") || ""));
+    if (!account) return res.status(401).json({ error: "Unauthorized" });
+    res.json({ username: account.username, ageConfirmed: Boolean(account.ageConfirmed) });
+  });
+  app.post("/api/bluelegacy/posts", async (req, res) => {
+    try { res.status(201).json(await createBlueLegacyPost(String(req.header("X-BlueLegacy-Token") || ""), String(req.body.body || ""))); } catch (error) { res.status(401).json({ error: error instanceof Error ? error.message : "Post failed" }); }
+  });
+  app.post("/api/bluelegacy/logout", async (req, res) => {
+    await logoutBlueLegacy(String(req.header("X-BlueLegacy-Token") || ""));
+    res.json({ success: true });
+  });
   registerStorageProxy(app);
   registerOAuthRoutes(app);
   // tRPC API
