@@ -18,4 +18,6 @@
 - [x] Save the final project checkpoint and deliver website/backend/iOS source artifacts
 - [ ] Replace the temporary Manus preview URL with a stable HTTPS BlueLegacy API domain compatible with iOS 9; the current test IPA uses an HTTP fallback only
 - [ ] Prepare GitHub Pages account-site deployment with a configured stable HTTPS backend origin for the iOS client
-- [ ] Fix the GitHub Pages workflow’s pnpm version conflict and rerun the public Pages deployment
+- [x] Fix the GitHub Pages workflow’s pnpm version conflict and rerun the public Pages deployment
+- [x] Publish the account site at https://lts4all.github.io/bluelegacy-social/ with HTTPS enforced
+- [x] Configure the iOS client to open GitHub Pages for account flows while using the HTTPS backend for API calls
