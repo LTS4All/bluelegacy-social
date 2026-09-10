@@ -21,4 +21,6 @@
 - [x] Fix the GitHub Pages workflow’s pnpm version conflict and rerun the public Pages deployment
 - [x] Publish the account site at https://lts4all.github.io/bluelegacy-social/ with HTTPS enforced
 - [x] Configure the iOS client to open GitHub Pages for account flows while using the HTTPS backend for API calls
-- [ ] Fix blank GitHub Pages site by setting the Vite base path to `/bluelegacy-social/`, redeploying, and verifying loaded assets
+- [x] Fix blank GitHub Pages site by setting the Vite base path to `/bluelegacy-social/`, redeploying, and verifying loaded assets
+- [ ] Ensure the plain GitHub Pages URL renders the BlueLegacy Home screen in a fresh browser session without a query string
+- [x] Add deterministic cache-busting or versioning so stale GitHub Pages bundles cannot keep showing the old 404 state
