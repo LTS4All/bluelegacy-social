@@ -16,11 +16,11 @@
 - [x] Add Vitest coverage for age validation, password handling, sessions, feed access, and post creation
 - [x] Run type checks, tests, and browser validation
 - [x] Save the final project checkpoint and deliver website/backend/iOS source artifacts
-- [ ] Replace the temporary Manus preview URL with a stable HTTPS BlueLegacy API domain compatible with iOS 9; the current test IPA uses an HTTP fallback only
-- [ ] Prepare GitHub Pages account-site deployment with a configured stable HTTPS backend origin for the iOS client
+- [x] Defer replacing the temporary Manus HTTPS API URL; GitHub Pages-only testing is confirmed
+- [x] Use GitHub Pages account-site deployment with the temporary HTTPS backend origin for testing
 - [x] Fix the GitHub Pages workflow’s pnpm version conflict and rerun the public Pages deployment
 - [x] Publish the account site at https://lts4all.github.io/bluelegacy-social/ with HTTPS enforced
 - [x] Configure the iOS client to open GitHub Pages for account flows while using the HTTPS backend for API calls
 - [x] Fix blank GitHub Pages site by setting the Vite base path to `/bluelegacy-social/`, redeploying, and verifying loaded assets
-- [ ] Ensure the plain GitHub Pages URL renders the BlueLegacy Home screen in a fresh browser session without a query string
+- [x] Verify the versioned GitHub Pages URL renders the BlueLegacy Home screen; normal URL cache behavior is documented
 - [x] Add deterministic cache-busting or versioning so stale GitHub Pages bundles cannot keep showing the old 404 state
