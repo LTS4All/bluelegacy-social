@@ -24,3 +24,7 @@
 - [x] Fix blank GitHub Pages site by setting the Vite base path to `/bluelegacy-social/`, redeploying, and verifying loaded assets
 - [x] Verify the versioned GitHub Pages URL renders the BlueLegacy Home screen; normal URL cache behavior is documented
 - [x] Add deterministic cache-busting or versioning so stale GitHub Pages bundles cannot keep showing the old 404 state
+- [ ] Make the GitHub Pages account flow compatible with iOS 9 Safari and older WebKit JavaScript/CSS behavior
+- [ ] Redesign the BlueLegacy account UI with friendly atomic components, high contrast, clear labels, and compact mobile layout
+- [ ] Redeploy the legacy-compatible Pages build and rebuild the armv7 IPA with the updated versioned web URL
+- [ ] Add an optional QR code panel to the BlueLegacy account UI linking to the GitHub Pages account flow, with a typed-URL fallback
