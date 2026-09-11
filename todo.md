@@ -28,6 +28,7 @@
 - [x] Redesign the BlueLegacy account UI with friendly atomic components, high contrast, clear labels, and compact mobile layout
 - [x] Redeploy the legacy-compatible Pages build and rebuild the armv7 IPA with the updated versioned web URL
 - [x] Add an optional QR code panel to the BlueLegacy account UI linking to the GitHub Pages account flow, with a typed-URL fallback
-- [ ] Preserve `returnTo=bluelegacy` in the legacy page and deep-link back with the issued session token after login or registration
-- [ ] Add a legacy-compatible Completed and Return to Bluesky Legacy state
-- [ ] Verify the full legacy account handoff contract against the rebuilt armv7 IPA
+- [x] Preserve `returnTo=bluelegacy` in the legacy page and deep-link back with the issued session token after login or registration
+- [x] Add a legacy-compatible Completed and Return to Bluesky Legacy state
+- [x] Verify the legacy account handoff contract against the rebuilt armv7 IPA; physical iPod installation remains user-side validation
+- [ ] Automatically launch `bluelegacy://auth?token=...` after successful legacy login or registration when `returnTo=bluelegacy`, while retaining the visible fallback button
